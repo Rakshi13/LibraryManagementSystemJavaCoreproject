@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Books {
 
     public int count;
-    Book theBooks[] = new Book[50];
+    Book[] theBooks = new Book[50];
 
     public void showMessage() {
         System.out.println("----------------------------------------------------------");
@@ -94,7 +94,7 @@ public class Books {
                         bookfound = true;
                     }
                 }
-                if (bookfound == false) {
+                if (!bookfound) {
                     System.out.println("No Books found for this serial No");
                 }
                 break;
@@ -117,7 +117,7 @@ public class Books {
                         bookNameFound = true;
                     }
                 }
-                if (bookNameFound == false) {
+                if (!bookNameFound) {
                     System.out.println("No book found for this given Book name");
                 }
                 break;
@@ -147,8 +147,44 @@ public class Books {
                 System.out.println("Updated the Total Quantity of this book.");
             }
         }
-        if(updateBookFound==false){
+        if(!updateBookFound){
             System.out.println("No Books Found for the given serial Number.");
+        }
+    }
+
+    public void checkInBook(){
+        Scanner input=new Scanner(System.in);
+        System.out.println("Please enter the serial no of the book to check-in");
+        int srNo=input.nextInt();
+        boolean checkin=false;
+
+        for(int i=0;i<count;i++){
+            if(srNo==theBooks[i].serialNumber){
+                theBooks[i].bookQuantity++;
+                checkin=true;
+                System.out.println("This book "+srNo+" is checkedIn");
+            }
+        }
+        if(checkin==false){
+            System.out.println("No Books Found.");
+        }
+    }
+
+    public void checkOutBook(){
+        Scanner input=new Scanner(System.in);
+        System.out.println("Please enter the serial no of the book to check-in");
+        int srNo=input.nextInt();
+        boolean checkin=false;
+
+        for(int i=0;i<count;i++){
+            if(srNo==theBooks[i].serialNumber){
+                theBooks[i].bookQuantity--;
+                checkin=true;
+                System.out.println("This book "+srNo+" is checkedOut");
+            }
+        }
+        if(checkin==false){
+            System.out.println("No Books Found.");
         }
     }
 

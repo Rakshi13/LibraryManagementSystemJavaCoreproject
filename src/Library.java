@@ -36,6 +36,14 @@ public class Library {
                     //show all the books
                     ob.showAllBooks();
                     break;
+                case 5:
+                    //check-in book
+                    ob.checkInBook();
+                    break;
+                case 6:
+                    //check-out-book
+                    ob.checkOutBook();
+                    break;
                 default:
                     System.out.println("Please enter Number between 0 and 9");
                     break;
